@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let dogSelected;
 
     //Events
-    document.querySelector('form').addEventListener('submit', (e) => {
+    document.querySelector('form').addEventListener('submit', handleSubmit)
+    //Handle Events
+    function handleSubmit(e) {
         e.preventDefault()
         const form = document.querySelector('form')
         const inputs = form.querySelectorAll('input')
@@ -13,14 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
             sex: inputs[2].value
         }
         updateDogToServer(updateDogObj)
-        
-    })
-    //Handle Events
-
-
+    }
 
     //Render to DOM
-    function updateDogInDom(dogObj){
+    function updateDogInDom(dogObj) {
         const row = document.getElementById(dogObj.id)
         const tdArray = row.querySelectorAll('td')
         tdArray[0].textContent = dogObj.name
